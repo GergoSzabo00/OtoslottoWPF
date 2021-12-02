@@ -20,6 +20,8 @@ namespace otoslotto
     /// </summary>
     public partial class MainWindow : Window
     {
+        public Dictionary<string, Page> pages = new Dictionary<string, Page>();
+
         public MainWindow()
         {
             InitializeComponent();

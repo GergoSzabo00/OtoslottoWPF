@@ -22,5 +22,25 @@ namespace otoslotto
         {
             InitializeComponent();
         }
+
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
+            if (!mainWindow.pages.ContainsKey("HomePage"))
+            {
+                HomePage homePage = new HomePage();
+                mainWindow.pages.Add("HomePage", homePage);
+                mainWindow.NavigationHolder.Content = homePage;
+            }
+            else
+            {
+                mainWindow.NavigationHolder.Content = mainWindow.pages["HomePage"];
+            }
+        }
     }
 }

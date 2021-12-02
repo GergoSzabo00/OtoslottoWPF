@@ -31,13 +31,33 @@ namespace otoslotto
         private void GotoGamePageButton_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
-            mainWindow.NavigationHolder.Content = new GamePage();
+            if (!mainWindow.pages.ContainsKey("GamePage"))
+            {
+                GamePage gamePage = new GamePage();
+                mainWindow.pages.Add("GamePage", gamePage);
+                mainWindow.NavigationHolder.Content = gamePage;
+            }
+            else 
+            {
+                mainWindow.NavigationHolder.Content = mainWindow.pages["GamePage"];
+            }
+            
         }
 
         private void GotoPrizesPageButton_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
-            mainWindow.NavigationHolder.Content = new PrizesPage();
+            if (!mainWindow.pages.ContainsKey("PrizesPage"))
+            {
+                PrizesPage prizesPage = new PrizesPage();
+                mainWindow.pages.Add("PrizesPage", prizesPage);
+                mainWindow.NavigationHolder.Content = prizesPage;
+            }
+            else
+            {
+                mainWindow.NavigationHolder.Content = mainWindow.pages["PrizesPage"];
+            }
         }
+
     }
 }
