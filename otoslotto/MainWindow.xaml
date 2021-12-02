@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:otoslotto"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
+        Title="Ötöslottó szimulátor" MinHeight="500" MinWidth="600"  Height="450" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid Background="#FF087B04">
+        <Frame x:Name="NavigationHolder" NavigationUIVisibility="Hidden" />
     </Grid>
 </Window>

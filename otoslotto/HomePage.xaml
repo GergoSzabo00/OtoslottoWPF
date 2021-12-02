@@ -1,0 +1,23 @@
+﻿<Page x:Class="otoslotto.HomePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:otoslotto"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="HomePage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.5*" />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Image Source="Images/logo.png" />
+        <Button x:Name="GotoGamePageButton" Grid.Row="1" Content="Játék" Margin="80,20,80,20" FontSize="22" Click="GotoGamePageButton_Click" />
+        <Button x:Name="GotoPrizesPageButton" Grid.Row="2" Content="Nyeremények" Margin="80,20,80,20" FontSize="22" Click="GotoPrizesPageButton_Click" />
+        <Button x:Name="ExitButton" Grid.Row="3" Content="Kilépés" Margin="80,20,80,20" FontSize="22" Click="ExitButton_Click" />
+    </Grid>
+</Page>
