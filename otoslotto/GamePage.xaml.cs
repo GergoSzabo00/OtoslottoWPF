@@ -46,7 +46,7 @@ namespace otoslotto
         bool isFourthNumberValid;
         bool isFifthNumberValid;
 
-        bool isGameInProgress;
+        public bool isGameInProgress;
 
         SolidColorBrush redBrush = new SolidColorBrush(Color.FromArgb(255, 255, 20, 147));
         SolidColorBrush normalBrush = new SolidColorBrush(Color.FromArgb(255,160, 160, 160));

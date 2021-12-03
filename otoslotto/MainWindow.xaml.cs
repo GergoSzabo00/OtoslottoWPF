@@ -28,5 +28,22 @@ namespace otoslotto
             InitializeComponent();
             NavigationHolder.Content = setNamePage;
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (pages.ContainsKey("GamePage"))
+            {
+                bool isGameInProgress = ((GamePage)pages["GamePage"]).isGameInProgress;
+                if (isGameInProgress)
+                {
+                    MessageBoxResult result = MessageBox.Show("A sorsolás épp folyamatban van, eközben nem léphetsz ki!",
+                    "Kilépés", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    if (result == MessageBoxResult.OK)
+                    {
+                        e.Cancel = true;
+                    }
+                }
+            }
+        }
     }
 }
