@@ -38,6 +38,27 @@
             <GradientStop Color="#FF8E29BF" Offset="0.807"/>
             <GradientStop Color="#FF611661" Offset="0.993"/>
         </LinearGradientBrush>
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="AllowDrop" Value="true"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBoxBase}">
+                        <Border Name="Border" CornerRadius="2" Padding="2" Background="#FFFFFF" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" >
+                            <ScrollViewer Margin="0" x:Name="PART_ContentHost"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="Border" Property="Background" Value="#FFFFFF"/>
+                                <Setter TargetName="Border" Property="BorderBrush" Value="#FFFFFF"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
         <Style x:Key="lottoBallLabelStyle" TargetType="{x:Type Label}">
             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
             <Setter Property="Background" Value="Transparent"/>
@@ -111,16 +132,80 @@
                                 <ColumnDefinition />
                                 <ColumnDefinition />
                             </Grid.ColumnDefinitions>
-                            <TextBox x:Name="firstPlayerNumberField" Grid.Column="0" Width="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" MaxLength="2" />
-                            <TextBox x:Name="secondPlayerNumberField" Grid.Column="1" Width="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" MaxLength="2" />
-                            <TextBox x:Name="thirdPlayerNumberField" Grid.Column="2" Width="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" MaxLength="2" />
-                            <TextBox x:Name="fourthPlayerNumberField" Grid.Column="3" Width="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" MaxLength="2" />
-                            <TextBox x:Name="fifthPlayerNumberField" Grid.Column="4" Width="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" MaxLength="2" />
+                            <TextBox 
+                                x:Name="firstPlayerNumberField" Grid.Column="0" 
+                                Width="40" 
+                                HorizontalContentAlignment="Center"
+                                VerticalContentAlignment="Center"
+                                BorderBrush="#FFA0A0A0"
+                                FontSize="20"
+                                MaxLength="2"
+                                CommandManager.PreviewExecuted="textBox_PreviewExecuted"
+                                ContextMenu="{x:Null}"
+                                PreviewTextInput="textBox_PreviewTextInput" 
+                                TextChanged="firstPlayerNumberField_TextChanged" 
+                                PreviewKeyDown="textBox_PreviewKeyDown"/>
+                            <TextBox 
+                                x:Name="secondPlayerNumberField"
+                                Grid.Column="1"
+                                Width="40"
+                                HorizontalContentAlignment="Center"
+                                VerticalContentAlignment="Center"
+                                BorderBrush="#FFA0A0A0"
+                                FontSize="20"
+                                MaxLength="2"
+                                CommandManager.PreviewExecuted="textBox_PreviewExecuted"
+                                ContextMenu="{x:Null}"
+                                PreviewTextInput="textBox_PreviewTextInput" 
+                                TextChanged="secondPlayerNumberField_TextChanged" 
+                                PreviewKeyDown="textBox_PreviewKeyDown"/>
+                            <TextBox 
+                                x:Name="thirdPlayerNumberField"
+                                Grid.Column="2"
+                                Width="40"
+                                HorizontalContentAlignment="Center"
+                                VerticalContentAlignment="Center"
+                                BorderBrush="#FFA0A0A0"
+                                FontSize="20"
+                                MaxLength="2"
+                                CommandManager.PreviewExecuted="textBox_PreviewExecuted"
+                                ContextMenu="{x:Null}"
+                                PreviewTextInput="textBox_PreviewTextInput" 
+                                TextChanged="thirdPlayerNumberField_TextChanged" 
+                                PreviewKeyDown="textBox_PreviewKeyDown"/>
+                            <TextBox 
+                                x:Name="fourthPlayerNumberField"
+                                Grid.Column="3"
+                                Width="40"
+                                HorizontalContentAlignment="Center"
+                                VerticalContentAlignment="Center"
+                                BorderBrush="#FFA0A0A0"
+                                FontSize="20"
+                                MaxLength="2"
+                                CommandManager.PreviewExecuted="textBox_PreviewExecuted"
+                                ContextMenu="{x:Null}"
+                                PreviewTextInput="textBox_PreviewTextInput" 
+                                TextChanged="fourthPlayerNumberField_TextChanged" 
+                                PreviewKeyDown="textBox_PreviewKeyDown"/>
+                            <TextBox 
+                                x:Name="fifthPlayerNumberField"
+                                Grid.Column="4"
+                                Width="40" 
+                                HorizontalContentAlignment="Center"
+                                VerticalContentAlignment="Center"
+                                BorderBrush="#FFA0A0A0"
+                                FontSize="20"
+                                MaxLength="2"
+                                CommandManager.PreviewExecuted="textBox_PreviewExecuted"
+                                ContextMenu="{x:Null}"
+                                PreviewTextInput="textBox_PreviewTextInput" 
+                                TextChanged="fifthPlayerNumberField_TextChanged" 
+                                PreviewKeyDown="textBox_PreviewKeyDown"/>
                         </Grid>
                     </Grid>
                 </Grid>
             </Border>
-            <Button Grid.Column="1" Content="Megjátszom a számokat!" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="15" FontSize="18" />
+            <Button x:Name="StartGameButton" Grid.Column="1" IsEnabled="False" Content="Megjátszom a számokat!" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="15" FontSize="18" Click="StartGameButton_Click" />
         </Grid>
 
         <Grid Grid.Row="1">
