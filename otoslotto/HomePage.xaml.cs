@@ -51,13 +51,14 @@ namespace otoslotto
             MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
             if (!mainWindow.pages.ContainsKey("PrizesPage"))
             {
-                PrizesPage prizesPage = new PrizesPage();
+                PrizesPage prizesPage = new PrizesPage(name);
                 mainWindow.pages.Add("PrizesPage", prizesPage);
                 mainWindow.NavigationHolder.Content = prizesPage;
             }
             else
             {
                 mainWindow.NavigationHolder.Content = mainWindow.pages["PrizesPage"];
+                ((PrizesPage)mainWindow.pages["PrizesPage"]).GetPrizes();
             }
         }
 

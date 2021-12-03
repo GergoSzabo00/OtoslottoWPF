@@ -9,6 +9,33 @@
       Title="PrizesPage">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="120" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <ListView x:Name="prizesHolder" Grid.ColumnSpan="3" SizeChanged="prizesHolder_SizeChanged" ScrollViewer.VerticalScrollBarVisibility="Visible">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Játékosnév" DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Header="Játékos számai" DisplayMemberBinding="{Binding PlayerNumbers}" />
+                    <GridViewColumn Header="Nyerőszámok" DisplayMemberBinding="{Binding WinnerNumbers}" />
+                    <GridViewColumn Header="Nyeremény" DisplayMemberBinding="{Binding PrizeText}" />
+                    <GridViewColumn Header="Találat" DisplayMemberBinding="{Binding Hits}" />
+                </GridView>
+            </ListView.View>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
+
+        <Button x:Name="BackButton" Grid.Row="1" Grid.Column="0" Content="Vissza" FontSize="22" Margin="50,20,50,20" Click="BackButton_Click" />
+        <Button x:Name="ExitButton" Grid.Row="1" Grid.Column="2" Content="Kilépés" FontSize="22" Margin="50,20,50,20" Click="ExitButton_Click" />
     </Grid>
 </Page>
