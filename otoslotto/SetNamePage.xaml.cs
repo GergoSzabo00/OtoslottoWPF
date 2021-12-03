@@ -18,9 +18,16 @@ namespace otoslotto
     /// </summary>
     public partial class SetNamePage : Page
     {
+        private string name;
+        public string Username
+        {
+            get { return name; }
+            set { name = value; }
+        }
         public SetNamePage()
         {
             InitializeComponent();
+            DataContext = this;
         }
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)
@@ -31,7 +38,8 @@ namespace otoslotto
         private void SetNameButton_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
-            mainWindow.NavigationHolder.Content = new HomePage();
+            Username = Username.Trim();
+            mainWindow.NavigationHolder.Content = new HomePage(name);
         }
     }
 }

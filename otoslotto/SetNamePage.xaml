@@ -7,7 +7,6 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="SetNamePage">
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1.5*" />
@@ -26,8 +25,39 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <TextBox x:Name="NameTextbox" Grid.Column="1" Width="300" MaxHeight="100" Margin="10,30,10,30" FontSize="18" VerticalContentAlignment="Center" MaxLength="20" />
-            <Button x:Name="SetNameButton" Grid.Column="2" Content="Ok" MaxHeight="100" Margin="10,30,10,30" FontSize="18" Click="SetNameButton_Click" />
+            <TextBox 
+                x:Name="NameTextbox"
+                Grid.Column="1"
+                Validation.ErrorTemplate="{StaticResource errorTemplate}"
+                Width="300"
+                MaxHeight="100"
+                Margin="10,30,10,30"
+                FontSize="18"
+                VerticalContentAlignment="Center"
+                HorizontalContentAlignment="Center"
+                MaxLength="20">
+                <TextBox.Text>
+                    <Binding Path="Username"
+                 Mode="TwoWay"
+                 UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <local:NameValidationRule ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <Button x:Name="SetNameButton" Grid.Column="2" Content="Ok" MaxHeight="100" Margin="10,30,10,30" FontSize="18" Click="SetNameButton_Click">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="IsEnabled" Value="False" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=(Validation.HasError), ElementName=NameTextbox}" Value="False">
+                                <Setter Property="IsEnabled" Value="True" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
         </Grid>
 
         <Button x:Name="ExitButton" Grid.Row="3" Content="Kilépés" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="150,15,150,15" FontSize="22" Click="ExitButton_Click" />

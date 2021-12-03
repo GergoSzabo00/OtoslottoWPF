@@ -18,9 +18,11 @@ namespace otoslotto
     /// </summary>
     public partial class HomePage : Page
     {
-        public HomePage()
+        string name;
+        public HomePage(string name)
         {
             InitializeComponent();
+            this.name = name;
         }
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)
@@ -33,7 +35,7 @@ namespace otoslotto
             MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
             if (!mainWindow.pages.ContainsKey("GamePage"))
             {
-                GamePage gamePage = new GamePage();
+                GamePage gamePage = new GamePage(name);
                 mainWindow.pages.Add("GamePage", gamePage);
                 mainWindow.NavigationHolder.Content = gamePage;
             }

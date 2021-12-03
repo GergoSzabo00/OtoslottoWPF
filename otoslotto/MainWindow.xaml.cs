@@ -21,11 +21,12 @@ namespace otoslotto
     public partial class MainWindow : Window
     {
         public Dictionary<string, Page> pages = new Dictionary<string, Page>();
+        public SetNamePage setNamePage = new SetNamePage();
 
         public MainWindow()
         {
             InitializeComponent();
-            NavigationHolder.Content = new SetNamePage();
+            NavigationHolder.Content = setNamePage;
         }
     }
 }

@@ -32,6 +32,8 @@ namespace otoslotto
         List<int> randomNumbers = new List<int>();
 
         string randomNumbersString;
+
+        string name;
         int hits = 0;
         string prize = "";
 
@@ -48,9 +50,12 @@ namespace otoslotto
         SolidColorBrush redBrush = new SolidColorBrush(Color.FromArgb(255, 255, 20, 147));
         SolidColorBrush normalBrush = new SolidColorBrush(Color.FromArgb(255,160, 160, 160));
 
-        public GamePage()
+        public GamePage(string name)
         {
             InitializeComponent();
+
+            this.name = name;
+
             timer1.Interval = 200;
             timer2.Interval = 200;
             timer3.Interval = 200;
@@ -155,7 +160,7 @@ namespace otoslotto
             MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
             if (!mainWindow.pages.ContainsKey("HomePage"))
             {
-                HomePage homePage = new HomePage();
+                HomePage homePage = new HomePage(name);
                 mainWindow.pages.Add("HomePage", homePage);
                 mainWindow.NavigationHolder.Content = homePage;
             }
