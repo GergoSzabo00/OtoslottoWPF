@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -404,10 +405,22 @@ namespace otoslotto
                 numberOfHitsText.Text = hits.ToString() + " találat!";
                 prizeText.Text = prize;
 
+                AppendCsvFile();
                 EndGame();
 
             }));
 
+        }
+
+        private void AppendCsvFile() 
+        {
+            string csvString = name + ";";
+            string playerNumbersList = string.Join(", ", playerNumbers);
+            string winnerNumbersList = string.Join(", ", randomNumbers);
+
+            csvString += playerNumbersList + ";" + winnerNumbersList + ";" + prize + ";" + hits;
+
+            File.AppendAllText("prizes.csv", csvString + Environment.NewLine);
         }
 
         private void EndGame() 
